@@ -31,3 +31,25 @@ body {
     background-color: #04AA6D;
     color: white;
 }
+
+.create-user-container{
+    padding: 15px
+}
+
+.create-user-container p{
+    margin: 0;
+    padding: 0
+}
+
+.btn-submit{
+    margin-top: 10px;
+    background-color: #04AA6D;
+}
+
+.update-container{
+    padding: 15px;
+}
+
+.update-container label {
+    display: block;
+}
