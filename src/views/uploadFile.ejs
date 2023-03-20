@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodejs</title>
+    <link rel="stylesheet" href="/scss/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/upload" class="active">Upload Files API test</a>
+    </div>
+
+    <div class="upload-files-api">
+        <h3>Upload Files API test</h3>
+        <form action="/upload-profile-pic" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Avatar: </label>
+                <input type="file" name="profile-pic"/>
+            </div>
+
+            <div>
+                <button class="btn-submit" type="submit">Save File Api</button>
+            </div>
+        </form>
+    </div>
+    <!---->   
+    <br/><hr/>
+    <!---->
+    <div class="upload-files-api">
+        <h3>Upload Many Files API test</h3>
+        <form action="/upload-profile-pic" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Avatar: </label>
+                <input type="file" multiple name="multiple-image"/>
+            </div>
+
+            <div>
+                <button class="btn-submit" type="submit">Save File Api</button>
+            </div>
+        </form>
+    </div>
+   
+
+</body>
+
+</html>

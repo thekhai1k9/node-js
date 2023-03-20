@@ -17,6 +17,10 @@ const initWebRoute = (app) => {
 
     router.post('/update-user', homeController.updateUser)
 
+    router.get('/upload', homeController.uploadFile)
+
+    router.post('/upload-profile-pic', homeController.handleUploadFile)
+
     router.get('/about', (req, res) => {
         res.send("hello 123456789")
     })
