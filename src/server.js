@@ -2,14 +2,16 @@
 import express from "express"
 import configViewEngine from "./configs/viewEngine"
 import initWebRoute from "./router/web"
-import connection from "./configs/connectdb"
 import initAPIRoute from  "./router/api"
 
 require("dotenv").config()
 
+var morgan = require('morgan')
 
 const app = express()
 const port = process.env.PORT || 8080
+
+app.use(morgan('combined'))
 
 app.use(express.urlencoded({ extended : true}))
 app.use(express.json())
@@ -22,6 +24,12 @@ initWebRoute(app)
 
 //init API route
 initAPIRoute(app)
+
+//handle 404
+
+app.use((req, res) => {
+    return res.render("404.ejs")
+})
 
 
 

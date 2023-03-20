@@ -1,5 +1,6 @@
 import pool from '../configs/connectdb'
-
+import multer from 'multer'
+import path from 'path'
 
 let getHomePage = async (req, res) => {
 
@@ -52,6 +53,45 @@ let updateUser = async  (req, res) => {
     return res.redirect('/')
 }
 
+//upload file done
+
+const storage = multer.diskStorage({
+    destination: function (req, res, cb) {
+        cb(null, 'uploads/')
+    },
+
+    //by default , multer remove file extensions so let's add them back
+
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+
+let uploadFile =  async (req, res) => {
+    return res.render("uploadFile.ejs")
+}
+
+
+let handleUploadFile = async (req, res) => {
+    let upload = multer({ storage: storage, fileFilter: helper.imageFilter}).single('profile-pic')
+
+
+    upload(req, res, function(err) {
+        if (req.fileValidationErrr) {
+            return res.send(req.fileValidationError)
+        }
+        else if (!req.file) {
+            return res.send("Please select an img to upload!!")
+        }
+        else if (err instanceof multer.MulterError) {
+            return res.send(err)
+        }
+        else if (err){
+            return res.send(err)
+        }
+    })
+}
+
 module.exports = {
-    getHomePage, getDetailPage, createNewUser, deleteUser, getEditPage, updateUser
+    getHomePage, getDetailPage, createNewUser, deleteUser, getEditPage, updateUser, uploadFile, handleUploadFile
 }
